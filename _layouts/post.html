@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<article itemscope itemtype="http://schema.org/BlogPosting">
+
+    <header>
+        <h1 class="ui header" itemprop="name headline">
+            {{ page.title }}
+            <div class="sub header">
+                Dernière actualisation le
+                <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+            </div>
+        </h1>
+    </header>
+    <div class="ui divider"></div>
+    <div itemprop="articleBody">
+        {{ content }}
+    </div>
+    <div class="ui divider"></div>
+    <h1 class="ui header">Interessé(e) ?</h1>
+    <p>Envie d’en savoir plus? On se rencontre chez nous ou partout ailleurs grâce à cette fabuleuse technologie qu’est le vidéo-chat?</p>
+    <div class="ui list">
+        <div class="item">
+            <i class="phone icon"></i>
+            <div class="content">
+                +352 691 941 643
+            </div>
+        </div>
+        <div class="item">
+            <i class="marker icon"></i>
+            <div class="content">
+                9, Avenue des Hauts-Fourneaux L-4362 Esch-Sur-Alzette
+            </div>
+        </div>
+        <div class="item">
+            <i class="mail icon"></i>
+            <div class="content">
+                <a href="mailto:jack@semantic-ui.com">jobs@doapps.com</a>
+            </div>
+        </div>
+    </div>
+
+</article>

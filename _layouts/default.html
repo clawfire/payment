@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+{% include head.html %}
+
+<body>
+
+    {% include header.html %}
+
+
+    <h1 class="ui center icon aligned header">
+        <img class="ui circular small image" src="{{"/logo.jpg" | prepend: site.baseurl}}" alt="It's me">
+        <div class="content" style="font-family: 'Vibur', cursive;">
+            Thibault Milan
+        </div>
+    </h1>
+
+
+
+    <div class="ui container">
+        {{ content }}
+    </div>
+
+    <div class="ui container">
+        <div class="ui divider"></div>
+    </div>
+
+    <div class="ui grid container">
+        {% include footer.html %}
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<div class="ui piled segment" style="font-family: 'Source Sans Pro', 'Helvetica Neue', arial, sans-serif">
+    <p>Bonjour,<br/>
+        <br/>
+    Vous trouverez ici la liste des prestations qu'il m'arrive de proposer. Pour simplifier les choses, cette page permet de procéder au réglement des différents services, sous la forme d'abonnement.</p>
+    <p>Attention, le fait d'utiliser cet outil ne garantie pas prestation et ne pourrais constituer un contrat. D'ailleurs si vous payez pour une prestation que vous ne me devez pas, je procéderais au remboursement. De plus, il n'y a pas de paiement direct, seule une autorisation sera demandé à votre banque.</p>
+    <p>Pour plus d'informations ou pour bénéficier d'un des services listés ci-dessous, <a href="mailto://hello@thibaultmilan.com" title="Envoyez moi un email">écrivez moi</a> ou <a href="tel://00251661880207" title="Appelez moi">appelez moi</a> !</p>
+    <p style="float:right;">- Thibault Milan</p>
+    <p>&nbsp;</p>
+</div>
+<div class="ui three stackable cards">
+    {% for offer in site.offers %}
+    <div class="card">
+        <div class="content">
+            <div class="header">
+                {{offer.title}}
+            </div>
+            <div class="meta">
+                {{offer.price.string}}€ pour une période de {{offer.period}}
+            </div>
+            <div class="description">
+                {{offer.content}}
+            </div>
+        </div>
+        <div class="ui bottom attached primary button" onclick="launchStripe({{offer.price.numeric}},'{{offer.title}}','{{offer.period}}');">
+          <i class="stripe icon"></i>
+          S'abonner
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script>
+var launchStripe = function(price,title,period){
+    StripeCheckout.configure({
+      key: "pk_test_rVToHfTD5wfTdGohETpBW3Zk",
+      image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+      name: title,
+      amount: price,
+      description: price/100 + " € pour une période de " + period,
+      panelLabel: "S'abonner pour ",
+      currency: "eur",
+      billingAddress : true,
+      allowRememberMe: true,
+      bitcoin: true
+  }).open();
+  return false;
+};
+</script>
